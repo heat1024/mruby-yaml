@@ -22,7 +22,7 @@ MRuby::Gem::Specification.new('mruby-yaml') do |spec|
 
   FileUtils.mkdir_p build_dir
 
-  if ! File.exists? yaml_dir
+  if ! File.exist? yaml_dir
     Dir.chdir(build_dir) do
       e = {}
       run_command e, "curl -L https://pyyaml.org/download/libyaml/yaml-#{yaml_version}.tar.gz | tar -xzv"
@@ -30,7 +30,7 @@ MRuby::Gem::Specification.new('mruby-yaml') do |spec|
     end
   end
 
-  if ! File.exists? "#{yaml_dir}/build/lib/libyaml.a"
+  if ! File.exist? "#{yaml_dir}/build/lib/libyaml.a"
     Dir.chdir yaml_dir do
       e = {
         'CC' => "#{spec.build.cc.command} #{spec.build.cc.flags.join(' ')}",
